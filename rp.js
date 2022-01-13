@@ -1,30 +1,67 @@
+
+
+
+
 function computerPlay(){
 
     let csel = Math.floor(Math.random() * 3 + 1 );
 
     if (csel === 1) {
-        return 'rock';
+        return 'Rock';
     }   else if (csel === 2) {
-        return 'paper';
+        return 'Paper';
     }   else {
-        return 'scissors';
+        return 'Scissors';
     }
 }
 
-let computerSelection = computerPlay();
-let playerSelection = 'rock';
+let playerScore = 0;
+let computerScore = 0;
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
+
+    let computerSelection = computerPlay();
+    let psel = prompt("Choose your Weapon");
+    let playerSelection = capitalize(psel);
+    
+
     if (playerSelection == computerSelection) {
-        return 'draw';
-    } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-        return 'win';
-    } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-        return 'win';
-    } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-        return 'win';
+        console.log(`Draw! You both chose ${playerSelection}`);
+    } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
+        playerScore++;
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+    } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+        playerScore++;
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+    } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+        playerScore++;
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
     } else {
-        return 'loss';
+        computerScore++;
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
     }
 
+}
+
+
+function game(){
+    for(let i = 0; i < 5; i++){
+        playRound();
+        
+    }
+
+    if(playerScore > computerScore){
+        console.log(`You win! Score: ${playerScore} : ${computerScore}`);
+    } else {
+        console.log(`You lose! Score: ${playerScore} : ${computerScore}`);
+    }
+   
+    playerScore = 0;
+    computerScore = 0;
+}
+
+function capitalize(rstr){
+   
+   let rsts = rstr.charAt(0).toUpperCase() + rstr.slice(1).toLowerCase();
+    return rsts;
 }
