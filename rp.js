@@ -2,7 +2,7 @@
 
 const wep = document.getElementById("weapon");
 
-wep.addEventlistener('click', () => {
+wep.addEventListener('click', () => {
     console.log(wep.value);
 });
 
