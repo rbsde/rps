@@ -1,6 +1,10 @@
 
 
+const wep = document.getElementById("weapon");
 
+wep.addEventlistener('click', () => {
+    console.log(wep.value);
+});
 
 function computerPlay(){
 
