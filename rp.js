@@ -2,7 +2,7 @@
 
 const wep = document.querySelectorAll(".weapon");
 
-[...wep].forEach((item) => {
+[...wep].forEach(item => {
   item.addEventListener("click", () => {
     playRound(item.value);
   });
@@ -73,34 +73,3 @@ function playRound(playerSelection) {
     }
 
 }
-
-
-
-
-
-
-
-
-/*
-function game(){
-    for(let i = 0; i < 5; i++){
-        playRound();
-        
-    }
-
-    if(playerScore > computerScore){
-        console.log(`You win! Score: ${playerScore} : ${computerScore}`);
-    } else {
-        console.log(`You lose! Score: ${playerScore} : ${computerScore}`);
-    }
-   
-    playerScore = 0;
-    computerScore = 0;
-}
-
-function capitalize(rstr){
-   
-   let rsts = rstr.charAt(0).toUpperCase() + rstr.slice(1).toLowerCase();
-    return rsts;
-}
-*/
