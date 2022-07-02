@@ -1,10 +1,18 @@
 
 
-const wep = document.getElementById("weapon");
+const wep = document.querySelectorAll(".weapon");
 
-wep.addEventListener('click', () => {
-    console.log(wep.value);
+[...wep].forEach((item) => {
+  item.addEventListener("click", () => {
+    playRound(item.value);
+  });
 });
+
+
+
+
+const result = document.getElementById('results');
+
 
 function computerPlay(){
 
@@ -20,34 +28,60 @@ function computerPlay(){
 }
 
 let playerScore = 0;
-let computerScore = 0;
+    let computerScore = 0;
 
-function playRound() {
+function playRound(playerSelection) {
 
     let computerSelection = computerPlay();
-    let psel = prompt("Choose your Weapon");
-    let playerSelection = capitalize(psel);
+
+    
     
 
     if (playerSelection == computerSelection) {
-        console.log(`Draw! You both chose ${playerSelection}`);
+        result.textContent = `Draw! You both chose ${playerSelection}`;
     } else if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
         playerScore++;
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        result.textContent = `You win! ${playerSelection} beats ${computerSelection}!`;
     } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
         playerScore++;
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        result.textContent = `You win! ${playerSelection} beats ${computerSelection}!`;
     } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
         playerScore++;
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        result.textContent = `You win! ${playerSelection} beats ${computerSelection}!`;
     } else {
         computerScore++;
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
+        result.textContent = `You lose! ${computerSelection} beats ${playerSelection}!`;
+
+
+
+
+
+        
+    }
+
+    document.getElementById('playerscore').textContent=`Playerscore: ${playerScore}`;
+    document.getElementById('computerscore').textContent=`Computerscore: ${computerScore}`;
+
+    if(playerScore == 5 || computerScore == 5){
+        if(playerScore > computerScore){
+            result.textContent = `You win! Score: ${playerScore} - ${computerScore}`;
+        } else {
+            result.textContent = `You lose! Score: ${playerScore} - ${computerScore}`;
+        }
+        playerScore = 0;
+        computerScore = 0;
     }
 
 }
 
 
+
+
+
+
+
+
+/*
 function game(){
     for(let i = 0; i < 5; i++){
         playRound();
@@ -69,3 +103,4 @@ function capitalize(rstr){
    let rsts = rstr.charAt(0).toUpperCase() + rstr.slice(1).toLowerCase();
     return rsts;
 }
+*/

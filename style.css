@@ -1,0 +1,27 @@
+.weapon {
+    padding: 50px;
+    background-color: aqua;
+    width: 150px;
+}
+
+#butts {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#results {
+    text-align: center;
+    font-size: 48px;
+    padding: 70px;
+}
+
+#scores {
+    display:flex;
+    justify-content: space-between;
+}
+
+li {
+    list-style: none;
+    padding: 50px;
+    font-size: 30px;
+}
